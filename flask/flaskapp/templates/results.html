@@ -79,7 +79,24 @@
         <br>
         <hr>
         <br>
-            
+        
+        <div class="row">
+            <div class="col text-start">
+                <p>
+                    Consider Adding These Popular Keywords:
+                </p>
+                <ul style="color: red;">
+                    {% for popular in top_keywords_add %}
+                        <li>{{ popular }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
         <div class="row">
             <div class="col text-start">
                 <p>
