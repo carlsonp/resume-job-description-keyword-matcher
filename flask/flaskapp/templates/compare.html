@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 class="text-center">Compare</h3>
+    <form method="post" class="d-flex" role="results" action="/results">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="resume" class="form-label">Resume</label>
+                    <textarea class="form-control" name="resume" id="resume" rows="24"></textarea>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="job" class="form-label">Job Description</label>
+                    <textarea class="form-control" name="job" id="job" rows="24"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Compare</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}
