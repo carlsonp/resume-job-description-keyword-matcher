@@ -46,14 +46,14 @@ def create_app():
             resume_cleaned = []
             resume_cleaned_lemmatization = []
             for token in nlp(resume):
-                if not token.is_stop and token.text not in resume_cleaned and len(token.text) > 3:
+                if not token.is_stop and token.text not in resume_cleaned and len(token.text) > 3 and token.pos_ not in ['ADJ', 'ADP', 'ADV', 'AUX', 'DET', 'INTJ', 'NUM', 'PART','PRON', 'PUNCT', 'SCONJ', 'SYM', 'X']:
                     resume_cleaned.append(token.text)
                     resume_cleaned_lemmatization.append(token.lemma_)
 
             job_cleaned = []
             job_cleaned_lemmatization = []
             for token in nlp(job):
-                if not token.is_stop and token.text not in job_cleaned and len(token.text) > 3:
+                if not token.is_stop and token.text not in job_cleaned and len(token.text) > 3 and token.pos_ not in ['ADJ', 'ADP', 'ADV', 'AUX', 'DET', 'INTJ', 'NUM', 'PART','PRON',  'PUNCT', 'SCONJ', 'SYM', 'X']:
                     job_cleaned.append(token.text)
                     job_cleaned_lemmatization.append(token.lemma_)
 
@@ -94,7 +94,7 @@ def create_app():
                     for match in [item for item in [regex_matches.group(1), regex_matches.group(0), regex_matches.group(2)] if item is not None and item]:
                         # don't search and replace words we're adding for the coloring
                         if match not in ['span', 'class', 'text', 'success', 'danger']:
-                            pattern = re.compile(re.escape(match), re.MULTILINE | re.IGNORECASE)
+                            pattern = re.compile(r'\b'+re.escape(match)+r'\b', re.MULTILINE | re.IGNORECASE)
                             colored_job_description = pattern.sub(f"<span class='text-success'>{match}</span>", colored_job_description)
             for word in misalignment.keys():
                 regex_matches = compiled_pattern.search(word)
@@ -103,7 +103,7 @@ def create_app():
                     for match in [item for item in [regex_matches.group(1), regex_matches.group(0), regex_matches.group(2)] if item is not None]:
                         # don't search and replace words we're adding for the coloring
                         if match not in ['span', 'class', 'text', 'success', 'danger']:
-                            pattern = re.compile(re.escape(match), re.MULTILINE | re.IGNORECASE)
+                            pattern = re.compile(r'\b'+re.escape(match)+r'\b', re.MULTILINE | re.IGNORECASE)
                             colored_job_description = pattern.sub(f"<span class='text-danger'>{match}</span>", colored_job_description)
                     
 
