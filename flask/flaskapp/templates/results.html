@@ -4,93 +4,108 @@
     <h3 class="text-center">Compare</h3>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <p>
-                        Alignment Percentage: <b>{{ alignment_percentage }}%</b>
-                    </p>
-                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{ alignment_percentage }}" aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: {{ alignment_percentage }}%">{{ alignment_percentage }}%</div>
-                    </div>
-                    <br>
-                    <br>
-
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOriginalResume" aria-expanded="false" aria-controls="collapseOriginalResume">
-                            Original Resume
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseOriginalResume">
-                        <div class="card card-body">{{ original_resume }}</div>
-                    </div>
-                    <br>
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOriginalJob" aria-expanded="false" aria-controls="collapseOriginalJob">
-                            Original Job
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseOriginalJob">
-                        <div class="card card-body">{{ original_job }}</div>
-                    </div>
-                    <br>
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedResume" aria-expanded="false" aria-controls="collapseCleanedResume">
-                            Cleaned Resume
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseCleanedResume">
-                        <div class="card card-body">{{ resume_cleaned }}</div>
-                    </div>
-                    <br>
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedResumeLemma" aria-expanded="false" aria-controls="collapseCleanedResumeLemma">
-                            Cleaned Resume with Lemmmatization
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseCleanedResumeLemma">
-                        <div class="card card-body">{{ resume_cleaned_lemmatization }}</div>
-                    </div>
-                    <br>
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedJob" aria-expanded="false" aria-controls="collapseCleanedJob">
-                            Cleaned Job
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseCleanedJob">
-                        <div class="card card-body">{{ job_cleaned }}</div>
-                    </div>
-                    <br>
-                    <p class="d-inline-flex gap-1">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedJobLemma" aria-expanded="false" aria-controls="collapseCleanedJobLemma">
-                            Cleaned Job with Lemmmatization
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseCleanedJobLemma">
-                        <div class="card card-body">{{ job_cleaned_lemmatization }}</div>
-                    </div>
-                    
-                    <p>
-                        Number of Keyword Matches: <b>{{ number_matches }}</b>
-                    </p>
-                    <p>
-                    Keyword Matches:
-                    <ul style="color: green;">
-                    {% for match in matches %}
-                        <li>{{ match }}</li>
-                    {% endfor %}
-                    </ul>
-                    </p>
-
-                    <p>
-                    Missing Keywords:
-                    <ul style="color: red;">
-                    {% for missing, value in misalignment.items() %}
-                        <li>{{ missing }} - {{ value }}</li>
-                    {% endfor %}
-                    </ul>
-                    </p>
-                    
+            <div class="col text-start">
+                <p>
+                    Alignment Percentage: <b>{{ alignment_percentage }}%</b>
+                </p>
+                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{ alignment_percentage }}" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: {{ alignment_percentage }}%">{{ alignment_percentage }}%</div>
                 </div>
+                <br>
+                <br>
+
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOriginalResume" aria-expanded="false" aria-controls="collapseOriginalResume">
+                        Original Resume
+                    </button>
+                </p>
+                <div class="collapse" id="collapseOriginalResume">
+                    <div class="card card-body">{{ original_resume }}</div>
+                </div>
+                <br>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOriginalJob" aria-expanded="false" aria-controls="collapseOriginalJob">
+                        Original Job
+                    </button>
+                </p>
+                <div class="collapse" id="collapseOriginalJob">
+                    <div class="card card-body">{{ original_job }}</div>
+                </div>
+                <br>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedResume" aria-expanded="false" aria-controls="collapseCleanedResume">
+                        Cleaned Resume
+                    </button>
+                </p>
+                <div class="collapse" id="collapseCleanedResume">
+                    <div class="card card-body">{{ resume_cleaned }}</div>
+                </div>
+                <br>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedResumeLemma" aria-expanded="false" aria-controls="collapseCleanedResumeLemma">
+                        Cleaned Resume with Lemmmatization
+                    </button>
+                </p>
+                <div class="collapse" id="collapseCleanedResumeLemma">
+                    <div class="card card-body">{{ resume_cleaned_lemmatization }}</div>
+                </div>
+                <br>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedJob" aria-expanded="false" aria-controls="collapseCleanedJob">
+                        Cleaned Job
+                    </button>
+                </p>
+                <div class="collapse" id="collapseCleanedJob">
+                    <div class="card card-body">{{ job_cleaned }}</div>
+                </div>
+                <br>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCleanedJobLemma" aria-expanded="false" aria-controls="collapseCleanedJobLemma">
+                        Cleaned Job with Lemmmatization
+                    </button>
+                </p>
+                <div class="collapse" id="collapseCleanedJobLemma">
+                    <div class="card card-body">{{ job_cleaned_lemmatization }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-start">
+                {{ colored_job_description | safe }}
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+            
+        <div class="row">
+            <div class="col text-start">
+                <p>
+                    Number of Keyword Matches: <b>{{ number_matches }}</b>
+                </p>
+                <p>
+                Keyword Matches:
+                <ul style="color: green;">
+                {% for match, value in matches.items() %}
+                    <li>{{ match }} - {{ value }}</li>
+                {% endfor %}
+                </ul>
+                </p>
+            </div>
+            <div class="col text-start">
+                <p>
+                    Number of Missing Keywords: <b>{{ misalignment_count }}</b>
+                </p>
+                <p>
+                Missing Keywords:
+                <ul style="color: red;">
+                {% for missing, value in misalignment.items() %}
+                    <li>{{ missing }} - {{ value }}</li>
+                {% endfor %}
+                </ul>
+                </p>
             </div>
         </div>
     </div>
