@@ -15,7 +15,7 @@ RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # https://docs.docker.com/build/guide/mounts/#add-a-cache-mount
-RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked pip3 install spacy gunicorn flask-compress humanize
+RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked pip3 install spacy gunicorn flask-compress
 
 # Pre-download the model so it's ready
 # https://spacy.io/models/en#en_core_web_lg

@@ -2,7 +2,6 @@ from pathlib import Path
 import string
 import spacy
 import re
-import humanize
 from flask_compress import Compress
 
 from flask import Flask, redirect, render_template, request, url_for
