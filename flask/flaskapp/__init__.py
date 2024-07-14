@@ -105,11 +105,12 @@ def create_app():
             # https://www.kaggle.com/datasets/timvdnbroucke/top-500-resume-keywords
             # https://www.colorado.edu/career/job-searching/resumes-and-cover-letters/resumes/action-verbs-use-your-resume
             # parse through popular keywords to see if there are any in the job description we're missing
-            for token in nlp(open('resume_keywords_cleaned.txt', 'r').read().lower()):
-                if not token.is_stop and token.text not in job_cleaned and len(token.text) > 3 and token.pos_ not in ['ADJ', 'ADP', 'ADV', 'AUX', 'DET', 'INTJ', 'NUM', 'PART','PRON',  'PUNCT', 'SCONJ', 'SYM', 'X']:
-                    for possiblematch in [token.text, token.lemma_]:
-                        if possiblematch not in matches and possiblematch in misalignment and possiblematch not in top_keywords_add:
-                            top_keywords_add.append(possiblematch)
+            with open('resume_keywords_cleaned.txt', 'r') as f:
+                for token in nlp(f.read().lower()):
+                    if not token.is_stop and token.text not in job_cleaned and len(token.text) > 3 and token.pos_ not in ['ADJ', 'ADP', 'ADV', 'AUX', 'DET', 'INTJ', 'NUM', 'PART','PRON',  'PUNCT', 'SCONJ', 'SYM', 'X']:
+                        for possiblematch in [token.text, token.lemma_]:
+                            if possiblematch not in matches and possiblematch in misalignment and possiblematch not in top_keywords_add:
+                                top_keywords_add.append(possiblematch)
 
             return render_template("results.html",
                                    original_resume=request.form.get("resume", ""),
